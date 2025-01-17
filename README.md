@@ -9,6 +9,7 @@ Since the performance of conversion from and to the type from standard floating 
 important, there is a benchmark against the 16 bit floating point type from the half library:
 
 This is the output from a run on a laptop, which shows comparable performance.
+```
 Run on (12 X 2496 MHz CPU s)
 CPU Caches:
   L1 Data 48 KiB (x6)
@@ -22,3 +23,4 @@ BM_FixedRangeFloatToDouble         3.39 ns        0.344 ns   1000000000
 BM_HalfToDouble                    3.65 ns         1.20 ns   1000000000
 BM_FixedRangeFloatFromDouble       1.94 ns        0.767 ns    896000000
 BM_HalfFromDouble                  1.77 ns        0.654 ns   1338026667
+```
