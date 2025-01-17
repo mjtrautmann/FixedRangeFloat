@@ -1,0 +1,9 @@
+﻿---
+BasedOnStyle: Google
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: 'false'
+ConstructorInitializerIndentWidth: '2'
+ColumnLimit: '100'
+
+...
