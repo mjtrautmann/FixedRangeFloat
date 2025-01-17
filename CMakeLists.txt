@@ -8,19 +8,10 @@ set (CMAKE_CXX_STANDARD 20)
 include_directories(src)
 
 # Run test if this is the main project
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+if(PROJECT_IS_TOP_LEVEL)
   file(GLOB_RECURSE ALL_SOURCE_FILES
     "${CMAKE_SOURCE_DIR}/src/*.h"
-  )
-
-  add_custom_target(clang-tidy-check
-    COMMAND ${CMAKE_COMMAND} -E echo "Running clang-tidy-check..."
-    COMMAND clang-tidy -p=${CMAKE_BINARY_DIR} --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy ${ALL_SOURCE_FILES}
-  )
-
-  add_custom_target(clang-tidy-fix
-    COMMAND ${CMAKE_COMMAND} -E echo "Running clang-tidy-fix..."
-    COMMAND clang-tidy -p=${CMAKE_BINARY_DIR} --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy -fix ${ALL_SOURCE_FILES}
+    "${CMAKE_SOURCE_DIR}/src/*.cpp"
   )
 
   # Add a custom target for clang-format
@@ -42,4 +33,10 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   enable_testing()
   add_executable(MyTest src/test.cpp)
   target_link_libraries(MyTest gtest gtest_main)
+
+  set(BENCHMARK_ENABLE_TESTING OFF)
+  add_subdirectory(libraries/benchmark)
+  include_directories(libraries/half/half)
+  add_executable(MyBenchmark src/benchmark.cpp)
+  target_link_libraries(MyBenchmark benchmark)
 endif()
