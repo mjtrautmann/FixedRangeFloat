@@ -14,6 +14,9 @@ TEST(FixedRangeFloatTest, ZeroToOne) {
   f = 0;
   v = f;
   EXPECT_FLOAT_EQ(0, v);
+  f = 0.25;
+  v = f;
+  EXPECT_FLOAT_EQ(0.25, v);
   f = 1;
   v = f;
   EXPECT_FLOAT_EQ(1, v);

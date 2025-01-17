@@ -9,7 +9,7 @@ template <double Lower, double Upper>
 class FixedRangeFloat {
  private:
   uint8_t m_value{0};
-  static constexpr uint8_t kSteps{254};
+  static constexpr uint8_t kSteps{252};
   static constexpr double kHalf{0.5};
 
  public:
