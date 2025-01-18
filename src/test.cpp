@@ -27,10 +27,10 @@ TEST(FixedRangeFloatTest, ZeroToOne) {
 }
 
 TEST(FixedRangeFloatTest, ThousandsRange) {
-  FixedRangeFloat<1000., 5000.> f;
+  using Temperature = FixedRangeFloat<1000., 5000.>;
+  Temperature f;
   for (int i = 10000; i < 50000; i++) {
     f = i / 10;
-    ;
     float v = f;
     EXPECT_NEAR(i / 10, v, f.error());
   }
